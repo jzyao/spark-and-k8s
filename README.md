@@ -1,5 +1,7 @@
 # spark on CCE - spark operator
 
+Spark Operator是在kubernetes上实践spark的最佳方式，和传统的spark-submit相比提供了更多的故障恢复与可靠性保障，并且提供了监控、日志、UI等能力的集成与支持。
+
 ## 准备
 - 创建CCE集群，2台工作节点，为了试验方便，每台节点都配了公网IP
   ```
@@ -62,7 +64,37 @@ NAME                      DESIRED   CURRENT   READY     AGE
 sparkoperator-d5c8869bd   1         1         1         39m
 ```
 
+## 测试用例
+```
+jzmac:examples docker$ kubectl apply -f spark-pi.yaml
+sparkapplication.sparkoperator.k8s.io "spark-pi" created
+jzmac:examples docker$ kubectl get sparkapplication
+NAME       AGE
+spark-pi   21s
+jzmac:examples docker$ kubectl get all
+NAME                            READY     STATUS    RESTARTS   AGE
+spark-pi-1556724799646-exec-1   1/1       Running   0          12s
+spark-pi-driver                 1/1       Running   0          3m
+
+NAME                                TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)             AGE
+kubernetes                          ClusterIP   10.247.0.1      <none>        443/TCP             22m
+spark-pi-1556724799646-driver-svc   ClusterIP   None            <none>        7078/TCP,7079/TCP   3m
+spark-pi-ui-svc                     NodePort    10.247.123.31   <none>        4040:31410/TCP      3m
+```
+查看
+![pi](/pic/pi.png?raw=true "pi")
+
+任务结束后，pod`spark-pi-1556724799646-exec-1`销毁，结果传给了drive
+```
+kubectl logs spark-pi-driver
+···
+Pi is roughly 3.14039570197851
+···
+```
+
 ##  安装Prometheus
+
+
 用helm chart安装Pormetheus
 ```
 helm install --name cce-prom stable/prometheus```
