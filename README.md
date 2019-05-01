@@ -58,8 +58,8 @@ helm install --name cce-prom incubator/prometheus```
 解决方法
 修改deployment的yaml文件，用之前准备的两块文件存储卷名替换
 
-```
-kubectl expose deployment --type=NodePort  --name=prometheus-webui
+
+kubectl expose deployment cce-prom-prometheus --type=NodePort  --name=prometheus-webui
 ```
 ## 测试用例
 
