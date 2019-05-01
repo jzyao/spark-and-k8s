@@ -82,7 +82,7 @@ spark-pi-ui-svc                     NodePort    10.247.123.31   <none>        40
 
 ![pi](/pic/pi.png?raw=true "pi")
 
-任务结束后，pod`spark-pi-1556724799646-exec-1`销毁，结果传给了drive
+任务结束后，pod`spark-pi-1556724799646-exec-1`销毁，结果传给了driver
 ```
 kubectl logs spark-pi-driver
 ···
