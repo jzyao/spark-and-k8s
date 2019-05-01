@@ -18,11 +18,9 @@ helm init --tiller-image=sapcc/tiller:v2.11.0 --service-account tiller
 ```
 
 ## 安装Spark operator
-
-
+官方的文档是通过Helm Chart进行安装的，由于很多开发者的环境无法连通google的repo，因此此处我们通过标准的yaml进行安装。
 ```
 git clone https://github.com/jzyao/spark-on-k8s-operator.git
-
 cd spark-on-k8s-operator
 
 ##安装crd
