@@ -49,6 +49,17 @@ kubectl apply -f manifest/spark-rbac.yaml
 kubectl apply -f manifest/spark-operator-with-metrics.yaml
 ```
 
+```
+kubectl get all -n spark-operator
+NAME                            READY     STATUS    RESTARTS   AGE
+sparkoperator-d5c8869bd-4n8q4   1/1       Running   0          39m
+
+NAME            DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+sparkoperator   1         1         1            1           39m
+
+NAME                      DESIRED   CURRENT   READY     AGE
+sparkoperator-d5c8869bd   1         1         1         39m
+```
 
 ##  安装Prometheus
 用helm chart安装Pormetheus
