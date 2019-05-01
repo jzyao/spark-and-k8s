@@ -24,6 +24,11 @@ tar -zxvf helm.tar.gz
 mv linux-amd64/helm /usr/local/bin/helm
 helm version
 helm repo add stable https://kubernetes.oss-cn-hangzhou.aliyuncs.com/
+
+kubectl create serviceaccount --namespace kube-system tiller
+kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
+
 helm init --tiller-image=sapcc/tiller:v2.13.0
 
 ```
