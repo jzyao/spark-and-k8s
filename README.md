@@ -53,13 +53,13 @@ kubectl apply -f manifest/spark-operator-with-metrics.yaml
 ##  安装Prometheus
 用helm chart安装Pormetheus
 ```
-helm install --name cce-prom incubator/prometheus```
+helm install --name cce-prom stable/prometheus```
 在这一步，有两个容器会报错，报错为，原因是
 解决方法
-修改deployment的yaml文件，用之前准备的两块文件存储卷名替换
+修改cce-prom-prometheus-alertmanager 和cce-prom-prometheus-server 两个deployment的yaml文件中persistentVolumeClaim名称，用之前准备的两块文件存储卷名替换
 
 
-kubectl expose deployment cce-prom-prometheus --type=NodePort  --name=prometheus-webui
+kubectl expose deployment cce-prom-prometheus-server --type=NodePort  --name=prometheus-webui
 ```
 ## 测试用例
 
