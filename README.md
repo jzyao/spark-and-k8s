@@ -68,11 +68,27 @@ helm install --name cce-prom stable/prometheus```
 在这一步，有两个容器会报错，报错为，原因是
 解决方法
 修改cce-prom-prometheus-alertmanager 和cce-prom-prometheus-server 两个deployment的yaml文件中persistentVolumeClaim名称，用之前准备的两块文件存储卷名替换
-
-
-kubectl expose deployment cce-prom-prometheus-server --type=NodePort  --name=prometheus-webui
 ```
 ## 测试用例
+```
+jzmac:examples docker$ kubectl apply -f spark-pi-configmap.yaml
+sparkapplication.sparkoperator.k8s.io "spark-pi" created
+jzmac:examples docker$ kubectl apply -f spark-pi-prometheus.yaml
+sparkapplication.sparkoperator.k8s.io "spark-pi" configured
+jzmac:examples docker$ kubectl get svc
+NAME                                     TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)             AGE
+cce-prom-prometheus-alertmanager         ClusterIP   10.247.200.68    <none>        80/TCP              20m
+cce-prom-prometheus-kube-state-metrics   ClusterIP   None             <none>        80/TCP              20m
+cce-prom-prometheus-node-exporter        ClusterIP   None             <none>        9100/TCP            20m
+cce-prom-prometheus-pushgateway          ClusterIP   10.247.254.199   <none>        9091/TCP            20m
+cce-prom-prometheus-server               ClusterIP   10.247.114.5     <none>        80/TCP              20m
+kubernetes                               ClusterIP   10.247.0.1       <none>        443/TCP             3h
+prometheus-webui                         NodePort    10.247.61.71     <none>        9090:30344/TCP      13m
+spark-pi-1556681717713-driver-svc        ClusterIP   None             <none>        7078/TCP,7079/TCP   5m
+spark-pi-ui-svc                          NodePort    10.247.37.29     <none>        4040:31241/TCP      5m
+```
+![sfs](/pic/sfs.png?raw=true "sfs")
+
 
 ## 安装Spark History Server
 
