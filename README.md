@@ -4,6 +4,8 @@
 - 创建CCE集群
 - 创建两块文件存储卷，安装Prometheus时需要
 - 工作节点安装 `yum install -y socat`
+- 下载kubeconfig文件到本地
+
 
 ## 安装Helm
 ```
