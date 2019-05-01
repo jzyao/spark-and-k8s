@@ -61,6 +61,7 @@ sparkoperator-d5c8869bd   1         1         1         39m
 ```
 
 ## 测试用例
+跑一个Spark的helloworld例子，圆周率运行
 ```
 jzmac:examples docker$ kubectl apply -f spark-pi.yaml
 sparkapplication.sparkoperator.k8s.io "spark-pi" created
@@ -77,7 +78,8 @@ kubernetes                          ClusterIP   10.247.0.1      <none>        44
 spark-pi-1556724799646-driver-svc   ClusterIP   None            <none>        7078/TCP,7079/TCP   3m
 spark-pi-ui-svc                     NodePort    10.247.123.31   <none>        4040:31410/TCP      3m
 ```
-查看
+查看结果
+
 ![pi](/pic/pi.png?raw=true "pi")
 
 任务结束后，pod`spark-pi-1556724799646-exec-1`销毁，结果传给了drive
@@ -92,6 +94,7 @@ Pi is roughly 3.14039570197851
 The operator exposes a set of metrics via the metric endpoint to be scraped by Prometheus. The Helm chart by default installs the operator with the additional flag to enable metrics (-enable-metrics=true) as well as other annotations used by Prometheus to scrape the metric endpoint. To install the operator without metrics enabled, pass the appropriate flag during helm install:
 
 创建两块PVC文件存储卷，根据PVC名称修改Prometheus chart/value.yaml中alertmanager和prometheus-server部分
+
    ![sfs](/pic/sfs.png?raw=true "sfs")
 
 用helm chart安装Prometheus
@@ -100,10 +103,12 @@ helm install --name cce-prom stable/prometheus
 ```
 
 Prometheus内target已UP
-![metrics](/pic/metrics.png?raw=true "metrics")
-Spark相关数据已经可以采集到
-![target](/pic/target.png?raw=true "target")
 
+![metrics](/pic/metrics.png?raw=true "metrics")
+
+Spark相关数据已经可以采集到
+
+![target](/pic/target.png?raw=true "target")
 
 指标列表如下，具体参考[官方文档](https://github.com/GoogleCloudPlatform/spark-on-k8s-operator/blob/master/docs/quick-start-guide.md)
 
@@ -119,11 +124,15 @@ Spark相关数据已经可以采集到
 | `spark_app_executor_failure_count` | Total number of Spark Executors which failed. |
 | `spark_app_executor_running_count` | Total number of Spark Executors which are currently running. |
 
-##监控，日志管理
+## 监控，日志管理
 配合华为云AOM可以实时监控，和查看实时/历史日志
-dashboard
+
+dashboard部分
+
 ![dashboard](/pic/dashboard.png?raw=true "dashboard")
-日志查看
+
+日志部分
+
 ![log](/pic/log.png?raw=true "log")
 
 
