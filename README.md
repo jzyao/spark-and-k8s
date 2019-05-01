@@ -1,7 +1,7 @@
 # spark on CCE - spark operator
 
 ## 准备
-- 创建CCE集群
+- 创建CCE集群，2台工作节点，为了试验方便，每台节点都配了公网IP
 - 创建两块文件存储卷，安装Prometheus时需要
 - 工作节点安装 `yum install -y socat`
 - 下载kubeconfig文件到本地
