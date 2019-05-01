@@ -6,6 +6,12 @@
 - 工作节点安装 `yum install -y socat`
 - 下载kubeconfig文件到本地
 
+```
+# kubectl get node
+NAME            STATUS    ROLES     AGE       VERSION
+192.168.0.135   Ready     <none>    14m       v1.11.7-r0-CCE2.0.20.B001
+192.168.0.34    Ready     <none>    14m       v1.11.7-r0-CCE2.0.20.B001
+```
 
 ## 安装Helm
 ```
