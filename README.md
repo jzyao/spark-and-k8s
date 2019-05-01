@@ -2,16 +2,20 @@
 
 ## 准备
 - 创建CCE集群，2台工作节点，为了试验方便，每台节点都配了公网IP
+  ```
+  # kubectl get node
+  NAME            STATUS    ROLES     AGE       VERSION
+  192.168.0.135   Ready     <none>    14m       v1.11.7-r0-CCE2.0.20.B001
+  192.168.0.34    Ready     <none>    14m       v1.11.7-r0-CCE2.0.20.B001
+  ```
 - 创建两块文件存储卷，安装Prometheus时需要
+   ![sfs](/pic/sfs.png?raw=true "sfs")
 - 工作节点安装 `yum install -y socat`
 - 下载kubeconfig文件到本地
 
-```
-# kubectl get node
-NAME            STATUS    ROLES     AGE       VERSION
-192.168.0.135   Ready     <none>    14m       v1.11.7-r0-CCE2.0.20.B001
-192.168.0.34    Ready     <none>    14m       v1.11.7-r0-CCE2.0.20.B001
-```
+
+
+
 
 ## 安装Helm
 ```
