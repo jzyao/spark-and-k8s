@@ -1,5 +1,7 @@
 # spark on CCE - spark operator
 
+Spark Operator是在kubernetes上实践spark的最佳方式，和传统的spark-submit相比提供了更多的故障恢复与可靠性保障，并且提供了监控、日志、UI等能力的集成与支持。
+
 ## 准备
 - 创建CCE集群，2台工作节点，为了试验方便，每台节点都配了公网IP
   ```
