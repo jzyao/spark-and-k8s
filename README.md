@@ -89,15 +89,30 @@ Pi is roughly 3.14039570197851
 ```
 
 ##  安装Prometheus
-和传统的spark-submit相比，spark operator提供了与Prometheus集成。这里做一个demo
+The operator exposes a set of metrics via the metric endpoint to be scraped by Prometheus. The Helm chart by default installs the operator with the additional flag to enable metrics (-enable-metrics=true) as well as other annotations used by Prometheus to scrape the metric endpoint. To install the operator without metrics enabled, pass the appropriate flag during helm install:
 
 创建两块PVC文件存储卷，根据PVC名称修改Prometheus chart/value.yaml中alertmanager和prometheus-server部分
    ![sfs](/pic/sfs.png?raw=true "sfs")
 
-用helm chart安装Pormetheus
+用helm chart安装Prometheus
 ```
-helm install --name cce-prom stable/prometheus```
+helm install --name cce-prom stable/prometheus
 ```
+
+可以看到在Prometheus内可以看到如下指标，具体参考https://github.com/jzyao/spark-on-k8s-operator/blob/master/docs/quick-start-guide.md#enable-metric-exporting-to-prometheus
+| Metric | Description |
+| ------------- | ------------- |
+| `spark_app_submit_count`  | Total number of SparkApplication submitted by the Operator.|
+| `spark_app_success_count` | Total number of SparkApplication which completed successfully.|
+| `spark_app_failure_count` | Total number of SparkApplication which failed to complete. |
+| `spark_app_running_count` | Total number of SparkApplication which are currently running.|
+| `spark_app_success_execution_time_microseconds` | Execution time for applications which succeeded.|
+| `spark_app_failure_execution_time_microseconds` |Execution time for applications which failed. |
+| `spark_app_executor_success_count` | Total number of Spark Executors which completed successfully. |
+| `spark_app_executor_failure_count` | Total number of Spark Executors which failed. |
+| `spark_app_executor_running_count` | Total number of Spark Executors which are currently running. |
+
+
 ## 测试用例
 ```
 jzmac:examples docker$ kubectl apply -f spark-pi-configmap.yaml
