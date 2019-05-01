@@ -10,8 +10,6 @@ Spark Operator是在kubernetes上实践spark的最佳方式，和传统的spark-
   192.168.0.135   Ready     <none>    14m       v1.11.7-r0-CCE2.0.20.B001
   192.168.0.34    Ready     <none>    14m       v1.11.7-r0-CCE2.0.20.B001
   ```
-- 创建两块文件存储卷，安装Prometheus时需要
-   ![sfs](/pic/sfs.png?raw=true "sfs")
 - 工作节点安装 `yum install -y socat`
 - 下载kubeconfig文件到本地
 
@@ -93,14 +91,14 @@ Pi is roughly 3.14039570197851
 ```
 
 ##  安装Prometheus
+和传统的spark-submit相比，spark operator提供了与Prometheus集成。这里做一个demo
 
+创建两块PVC文件存储卷，根据PVC名称修改Prometheus chart/value.yaml中alertmanager和prometheus-server部分
+   ![sfs](/pic/sfs.png?raw=true "sfs")
 
 用helm chart安装Pormetheus
 ```
 helm install --name cce-prom stable/prometheus```
-在这一步，有两个容器会报错，报错为，原因是
-解决方法
-修改cce-prom-prometheus-alertmanager 和cce-prom-prometheus-server 两个deployment的yaml文件中persistentVolumeClaim名称，用之前准备的两块文件存储卷名替换
 ```
 ## 测试用例
 ```
