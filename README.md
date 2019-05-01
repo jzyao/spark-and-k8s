@@ -100,6 +100,7 @@ helm install --name cce-prom stable/prometheus
 ```
 
 可以看到在Prometheus内可以看到如下指标，具体参考https://github.com/jzyao/spark-on-k8s-operator/blob/master/docs/quick-start-guide.md#enable-metric-exporting-to-prometheus
+
 | Metric | Description |
 | ------------- | ------------- |
 | `spark_app_submit_count`  | Total number of SparkApplication submitted by the Operator.|
