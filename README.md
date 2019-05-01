@@ -100,7 +100,7 @@ helm install --name cce-prom stable/prometheus
 
 Prometheus内target已UP
 
-![metrics](/pic/metrics.png?raw=true "metrics")
+![metrics](./pic/metrics.png?raw=true "metrics")
 
 Spark相关数据已经可以采集到
 
