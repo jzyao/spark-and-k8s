@@ -13,10 +13,6 @@ Spark Operator是在kubernetes上实践spark的最佳方式，和传统的spark-
 - 工作节点安装 `yum install -y socat`
 - 下载kubeconfig文件到本地
 
-
-
-
-
 ## 安装Helm
 ```
 wget -O helm.tar.gz https://storage.googleapis.com/kubernetes-helm/helm-v2.13.0-linux-amd64.tar.gz
@@ -80,7 +76,7 @@ spark-pi-ui-svc                     NodePort    10.247.123.31   <none>        40
 ```
 查看结果
 
-![pi](/pic/pi.png?raw=true "pi")
+![pi](./pic/pi.png?raw=true "pi")
 
 任务结束后，pod`spark-pi-1556724799646-exec-1`销毁，结果传给了driver
 ```
@@ -95,7 +91,7 @@ The operator exposes a set of metrics via the metric endpoint to be scraped by P
 
 创建两块PVC文件存储卷，根据PVC名称修改Prometheus chart/value.yaml中alertmanager和prometheus-server部分
 
-   ![sfs](/pic/sfs.png?raw=true "sfs")
+   ![sfs](./pic/sfs.png?raw=true "sfs")
 
 用helm chart安装Prometheus
 ```
@@ -108,7 +104,7 @@ Prometheus内target已UP
 
 Spark相关数据已经可以采集到
 
-![target](/pic/target.png?raw=true "target")
+![target](./pic/target.png?raw=true "target")
 
 指标列表如下，具体参考[官方文档](https://github.com/GoogleCloudPlatform/spark-on-k8s-operator/blob/master/docs/quick-start-guide.md)
 
@@ -129,15 +125,11 @@ Spark相关数据已经可以采集到
 
 dashboard部分
 
-![dashboard](/pic/dashboard.png?raw=true "dashboard")
+![dashboard](./pic/dashboard.png?raw=true "dashboard")
 
 日志部分
 
-![log](/pic/log.png?raw=true "log")
-
-
-
-
+![log](./pic/log.png?raw=true "log")
 
 ## 安装Spark History Server
 
