@@ -1,14 +1,14 @@
-# spark on CCE - spark operator
+# spark-on-k8s-operator实践
 
 Spark Operator是在kubernetes上实践spark的最佳方式，和传统的spark-submit相比提供了更多的故障恢复与可靠性保障，并且提供了监控、日志、UI等能力的集成与支持。
 
 ## 准备
-- 创建CCE集群，2台工作节点，为了试验方便，每台节点都配了公网IP
+- 在华为公有云创建CCE集群，2台工作节点，为了试验方便，每台节点都配了公网IP
   ```
-  # kubectl get node
+  $ kubectl get node
   NAME            STATUS    ROLES     AGE       VERSION
-  192.168.0.135   Ready     <none>    14m       v1.11.7-r0-CCE2.0.20.B001
-  192.168.0.34    Ready     <none>    14m       v1.11.7-r0-CCE2.0.20.B001
+  192.168.0.164   Ready     <none>    1h        v1.11.7-r0-CCE2.0.20.B001
+  192.168.0.171   Ready     <none>    1h        v1.11.7-r0-CCE2.0.20.B001
   ```
 - 工作节点安装 `yum install -y socat`
 - 下载kubeconfig文件到本地
