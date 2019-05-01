@@ -24,13 +24,13 @@ tar -zxvf helm.tar.gz
 mv linux-amd64/helm /usr/local/bin/helm
 helm version
 helm repo add stable https://kubernetes.oss-cn-hangzhou.aliyuncs.com/
+helm repo add incubator http://storage.googleapis.com/kubernetes-charts-incubator
 
 kubectl create serviceaccount --namespace kube-system tiller
 kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
 kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
 
-helm init --tiller-image=sapcc/tiller:v2.13.0
-
+helm init --upgrade --service-account tiller --tiller-image=sapcc/tiller:v2.13.0
 ```
 
 ## 安装Spark operator
@@ -53,8 +53,7 @@ kubectl apply -f manifest/spark-operator-with-metrics.yaml
 ##  安装Prometheus
 用helm chart安装Pormetheus
 ```
-helm install --name CCE-prom stable/prometheus
-```
+helm install --name cce-prom incubator/prometheus```
 在这一步，有两个容器会报错，报错为，原因是
 解决方法
 修改deployment的yaml文件，用之前准备的两块文件存储卷名替换
