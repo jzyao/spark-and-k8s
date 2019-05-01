@@ -99,7 +99,7 @@ The operator exposes a set of metrics via the metric endpoint to be scraped by P
 helm install --name cce-prom stable/prometheus
 ```
 
-可以看到在Prometheus内可以看到如下指标，具体参考[官方文档]（https://github.com/GoogleCloudPlatform/spark-on-k8s-operator/blob/master/docs/quick-start-guide.md）
+可以看到在Prometheus内可以看到如下指标，具体参考[官方文档](https://github.com/GoogleCloudPlatform/spark-on-k8s-operator/blob/master/docs/quick-start-guide.md)
 
 | Metric | Description |
 | ------------- | ------------- |
