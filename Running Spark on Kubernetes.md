@@ -16,6 +16,7 @@ You must have Kubernetes DNS configured in your cluster.
 
 ## How it works
  ![k8s-cluster-mode](./pic/k8s-cluster-mode.png?raw=true "k8s-cluster-mode.png")
+ 
  spark-submit can be directly used to submit a Spark application to a Kubernetes cluster. The submission mechanism works as follows:
 
 Spark creates a Spark driver running within a Kubernetes pod.
