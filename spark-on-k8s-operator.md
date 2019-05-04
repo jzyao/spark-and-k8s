@@ -3,10 +3,6 @@
 * [Introduction](#Introduction)
 * [Architecture](#architecture)
 * [部署测试](#部署测试)
-* [Handling Application Restart](#handling-application-restart)
-* [Handling Retries of Failed Submissions](#handling-retries-of-failed-submissions)
-* [Mutating Admission Webhook](#mutating-admission-webhook)
-* [Command-line Tool: Sparkctl](#command-line-tool:-sparkctl)
 
 [官方文档](https://github.com/GoogleCloudPlatform/spark-on-k8s-operator)
 
