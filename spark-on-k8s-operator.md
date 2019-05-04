@@ -86,7 +86,7 @@ NAME                      DESIRED   CURRENT   READY     AGE
 sparkoperator-d5c8869bd   1         1         1         39m
 ```
 
-### 测试用例
+### Example Using Kubernetes Operator For Spark
 跑一个Spark的helloworld例子，圆周率运行
 ```
 jzmac:examples docker$ kubectl apply -f spark-pi.yaml
