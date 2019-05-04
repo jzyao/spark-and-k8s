@@ -1,6 +1,7 @@
 # Running Spark on Kubernetes
 
 [官方文档](https://github.com/apache-spark-on-k8s/spark)
+
 [apache-spark-on-k8s](https://github.com/apache-spark-on-k8s/spark)
 
 
@@ -15,6 +16,7 @@ You must have Kubernetes DNS configured in your cluster.
 
 ## How it works
  ![k8s-cluster-mode](./pic/k8s-cluster-mode.png?raw=true "k8s-cluster-mode.png")
+ 
  spark-submit can be directly used to submit a Spark application to a Kubernetes cluster. The submission mechanism works as follows:
 
 Spark creates a Spark driver running within a Kubernetes pod.
