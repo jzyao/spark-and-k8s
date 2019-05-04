@@ -1,4 +1,4 @@
-# spark-on-k8s-operator实践
+# spark-on-k8s-operator
 
 Spark Operator是在kubernetes上实践spark的最佳方式，和传统的spark-submit相比提供了更多的故障恢复与可靠性保障，并且提供了监控、日志、UI等能力的集成与支持。
 
