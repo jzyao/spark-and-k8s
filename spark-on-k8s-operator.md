@@ -2,7 +2,7 @@
 ## Table of Contents
 * [Introduction](#Introduction)
 * [Architecture](#architecture)
-* [部署测试](#部署测试)
+* [Example Using Kubernetes Operator For Spark](#Example Using Kubernetes Operator For Spark)
 
 [官方文档](https://github.com/GoogleCloudPlatform/spark-on-k8s-operator)
 
@@ -31,7 +31,7 @@ The following diagram shows how different components interact and work together.
 Specifically, a user uses the `sparkctl` (or `kubectl`) to create a `SparkApplication` object. The `SparkApplication` controller receives the object through a watcher from the API server, creates a submission carrying the `spark-submit` arguments, and sends the submission to the *submission runner*. The submission runner submits the application to run and creates the driver pod of the application. Upon starting, the driver pod creates the executor pods. While the application is running, the *Spark pod monitor* watches the pods of the application and sends status updates of the pods back to the controller, which then updates the status of the application accordingly. 
 
 
-## 部署测试
+## Example Using Kubernetes Operator For Spark
 ### 准备
 - 在华为公有云创建CCE集群，2台工作节点，为了试验方便，每台节点都配了公网IP
   ```
