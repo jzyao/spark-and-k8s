@@ -1,8 +1,8 @@
 # spark-on-k8s-operator
 ## Table of Contents
 * [Introduction](#Introduction)
-* [Architecture](#architecture)
-* [Example Using Kubernetes Operator For Spark](#Example Using Kubernetes Operator For Spark)
+* [Architecture](#Architecture)
+* [Example Using Kubernetes Operator For Spark](#Example)
 
 [官方文档](https://github.com/GoogleCloudPlatform/spark-on-k8s-operator)
 
