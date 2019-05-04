@@ -26,7 +26,7 @@ The operator consists of:
 
 The following diagram shows how different components interact and work together.
 
-![Architecture Diagram](./architecture-diagram.png)
+![Architecture Diagram](./pic/architecture-diagram.png)
 
 Specifically, a user uses the `sparkctl` (or `kubectl`) to create a `SparkApplication` object. The `SparkApplication` controller receives the object through a watcher from the API server, creates a submission carrying the `spark-submit` arguments, and sends the submission to the *submission runner*. The submission runner submits the application to run and creates the driver pod of the application. Upon starting, the driver pod creates the executor pods. While the application is running, the *Spark pod monitor* watches the pods of the application and sends status updates of the pods back to the controller, which then updates the status of the application accordingly. 
 
