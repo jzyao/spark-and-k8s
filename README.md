@@ -26,6 +26,6 @@ Supports mounting volumes and ConfigMaps in Spark pods to customize them, a feat
 Provides a useful CLI to manage jobs.
 
 ## Deep Dive
-[Spark-Submit](./Spark-Submit)
+[Spark-Submit](./Spark-Submit.md)
 
 [Kubernetes Operator for Spark](./spark-on-k8s-operator.md)
